@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<!-- <div class="col-md-6 offset-md-3"> -->
+
+{% if user.is_authenticated %}
+<h1>Records ....</h1>
+<!-- <table class="table table-striped table-hover  table-bordered table-sm">
+    <thead >
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">created_at</th>
+        <th scope="col">Name</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Zipcode</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    
+
+      
+  {% if records %}
+      {% for record in records %}
+
+      <tr class="table-dark"> 
+
+   
+        <td><a href="{% url 'record' record.id %}">{{record.id}}</a></td>
+        <td>  {{record.created_at}} </td>
+        <td>  {{record.first_name}} </td>
+        <td>  {{record.last_name}} </td>
+        <td>  {{record.email}} </td>
+        <td>  {{record.phone}} </td>
+        <td>  {{record.address}} </td>
+        <td>  {{record.city}} </td>
+        <td>  {{record.state}} </td>
+        <td>  {{record.zipcode}} </td>
+
+      </tr>
+          
+
+       {% endfor %}
+
+
+  {% endif %}
+    
+
+  
+</tbody>
+</table> -->
+
+
+<div class="container-fluid">
+  <div class="table-responsive">
+      <table class="table table-striped table-hover table-bordered table-sm">
+          <thead>
+              <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">created_at</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">LastName</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">City</th>
+                  <th scope="col">State</th>
+                  <th scope="col">Zipcode</th>
+              </tr>
+          </thead>
+          <tbody class="table-group-divider">
+              {% if records %}
+              {% for record in records %}
+              <tr class="table-dark">
+                  <td><a href="{% url 'record' record.id %}">{{record.id}}</a></td>
+                  <td>{{record.created_at}}</td>
+                  <td>{{record.first_name}}</td>
+                  <td>{{record.last_name}}</td>
+                  <td>{{record.email}}</td>
+                  <td>{{record.phone}}</td>
+                  <td>{{record.address}}</td>
+                  <td>{{record.city}}</td>
+                  <td>{{record.state}}</td>
+                  <td>{{record.zipcode}}</td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+          </tbody>
+      </table>
+  </div>
+</div>
+
+
+
+{% else %}
+
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="position-relative">
+                <img src="{% static 'example.jpg' %}" alt="Example Image" class="img-fluid">
+                <a href="{% url 'login' %}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Login</a>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1>Log in to continue</h1>
+<a class="btn btn-secondary" href="{% url 'login' %}">Login</a>
+<br>
+<div class="container">
+  <div class="row">
+      <div class="col">
+    
+          <img src="/website/img/" class="img-fluid" alt="Responsive Image">
+      </div>
+  </div>
+</div> -->
+
+<!-- </div> -->
+
+{% endif %}
+
+{% endblock %}
